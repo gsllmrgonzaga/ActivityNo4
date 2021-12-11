@@ -1,5 +1,6 @@
 package com.example.gonzaga.data;
 
+import android.content.ContentValues;
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
@@ -7,6 +8,7 @@ import android.database.sqlite.SQLiteOpenHelper;
 import androidx.annotation.Nullable;
 
 import com.example.gonzaga.R;
+import com.example.gonzaga.model.Product;
 import com.example.gonzaga.util.Util;
 
 public class DatabaseHandler extends SQLiteOpenHelper {
@@ -34,6 +36,18 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 
     //CREATE
 
+    public void addProduct(Product product)
+    {
+        SQLiteDatabase db = this.getWritableDatabase();
+
+        ContentValues values = new ContentValues();
+        values.put(Util.KEY_NAME, product.getName());
+        values.put(Util.KEY_PRICE, product.getPrice());
+        values.put(Util.KEY_QUANTITY, product.getQuantity());
+
+        db.insert(Util.TABLE_NAME, null, values);
+        db.close();
+    }
     //RETRIEVE
 
     //UPDATE
