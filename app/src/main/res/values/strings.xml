@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">Activity no. 4 - Database</string>
+    <string name="drop_table">DROP TABLE IF EXIST</string>
 </resources>
